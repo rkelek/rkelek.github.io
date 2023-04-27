@@ -47,7 +47,7 @@ var dayCnt = 0;
 var pText = '';
 $('document').ready(function () {
 	for(var i = 0 ; i < 368; i++){			
-		pText += '<tr><td>'+toString(refDay)+'</td><td>'+(workYn == 'Y' ? "일하는날 : " : "쉬는날 : ")+'</td></tr>'
+		pText += '<tr><td>'+toString(refDay)+'</td><td>'+(workYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
 		dayCnt++;
 		refDay.addDays(1);
 		if(dayCnt == 4){
