@@ -83,14 +83,15 @@
 	function gridDays(){
 		var gridDay = new Date(refDay);
 		var gridDayCnt = dayCnt;
+		var gridWorkYn = workYn;
 		var pText = '';
 		for(var i = 0 ; i < 365; i++){
-			pText += '<tr><td>'+toString(gridDay)+'</td><td>'+(workYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
+			pText += '<tr><td>'+toString(gridDay)+'</td><td>'+(gridWorkYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
 			gridDayCnt++;
 			gridDay.addDays(1);
 			if(gridDayCnt == 4){
 				gridDayCnt = 0;
-				workYn = workYn == 'Y' ? 'N' : 'Y';
+				gridWorkYn = gridWorkYn == 'Y' ? 'N' : 'Y';
 			}
 		}
 
@@ -101,6 +102,9 @@
 		$('#datepicker').val($( "#datepicker" ).val());
 		calcWorkDay($( "#datepicker" ).val());
 	}
+
+
+
 
 	function calcWorkDay(targetDay){
 		Date.prototype.addDays = function (days) {
