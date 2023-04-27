@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,124 +15,124 @@
 
 </head>
 <style>
-table,
-th,
-td {
-border: 1px solid black;
-border-collapse: collapse;
-text-align: center;
-padding: 10px;
-}
+	table,
+	th,
+	td {
+		border: 1px solid black;
+		border-collapse: collapse;
+		text-align: center;
+		padding: 10px;
+	}
 </style>
 
 <body>
-	<p>시작일 : <input type="text" id="datepicker" value="2023-04-18" onchange="dateChange()"></p>
-	<table>
-		<thead>
-			<tr>
-				<th>날짜</th>
-				<th>출근여부</th>          
-			</tr>
-		</thead>
-		<tbody id="tbooyCheck">
-		</tbody>
-	</table>
+<p>시작일 : <input type="text" id="datepicker" value="2023-04-18" onchange="dateChange()"></p>
+<table>
+	<thead>
+	<tr>
+		<th>날짜</th>
+		<th>출근여부</th>
+	</tr>
+	</thead>
+	<tbody id="tbooyCheck">
+	</tbody>
+</table>
 </body>
-	
+
 <script>
-Date.prototype.addDays = function (days) {
-	var date = this;
-	return new Date(date.setDate(date.getDate() + days));
-};
-
-var refDay = new Date('2023-04-18');
-var workYn = "Y";
-var dayCnt = 0;
-var pText = '';
-$('document').ready(function () {
-	$.datepicker.setDefaults({
-		dateFormat: 'yy-mm-dd',
-		prevText: '이전 달',
-		nextText: '다음 달',
-		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-		dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-		showMonthAfterYear: true,
-		yearSuffix: '년'
-	});
-
-	$(function() {
-		$("#datepicker").datepicker();
-	});
-
-	gridDays();
-});
-
-function gridDays(){
-	var gridDay = new Date(refDay);;
-	for(var i = 0 ; i < 368; i++){
-		pText += '<tr><td>'+toString(gridDay)+'</td><td>'+(workYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
-		dayCnt++;
-		gridDay.addDays(1);
-		if(dayCnt == 4){
-			dayCnt = 0;
-			workYn = workYn == 'Y' ? 'N' : 'Y';
-		}
-	}
-
-	$('#tbooyCheck').html(pText)
-}
-
-function dateChange(){
-	todayWorkYn($( "#datepicker" ).val());
-}
-
-function todayWorkYn(targetDay){
 	Date.prototype.addDays = function (days) {
 		var date = this;
 		return new Date(date.setDate(date.getDate() + days));
 	};
-	var today = new Date(targetDay);
 
-	if(today < refDay){
+	var refDay = new Date('2023-04-18');
+	var workYn = "Y";
+	var dayCnt = 0;
+	var pText = '';
+	$('document').ready(function () {
+		$.datepicker.setDefaults({
+			dateFormat: 'yy-mm-dd',
+			prevText: '이전 달',
+			nextText: '다음 달',
+			monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+			monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+			dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+			dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+			dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+			showMonthAfterYear: true,
+			yearSuffix: '년'
+		});
+
+		$(function() {
+			$("#datepicker").datepicker();
+		});
+
+		gridDays();
+	});
+
+	function gridDays(){
+		var gridDay = new Date(refDay);;
 		for(var i = 0 ; i < 368; i++){
-			if(today == refDay){
-				gridDays();
-				break;
-			}
-
-			refDay.addDays(-1);
-			if(dayCnt == 0){
-				dayCnt = 3;
+			pText += '<tr><td>'+toString(gridDay)+'</td><td>'+(workYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
+			dayCnt++;
+			gridDay.addDays(1);
+			if(dayCnt == 4){
+				dayCnt = 0;
 				workYn = workYn == 'Y' ? 'N' : 'Y';
-			}else{
-				dayCnt--;
 			}
+		}
 
+		$('#tbooyCheck').html(pText)
+	}
+
+	function dateChange(){
+		todayWorkYn($( "#datepicker" ).val());
+	}
+
+	function todayWorkYn(targetDay){
+		Date.prototype.addDays = function (days) {
+			var date = this;
+			return new Date(date.setDate(date.getDate() + days));
+		};
+		var today = new Date(targetDay);
+
+		if(today < refDay){
+			for(var i = 0 ; i < 368; i++){
+				if(toString(today) == toString(refDay)){
+					gridDays();
+					break;
+				}
+
+				refDay.addDays(-1);
+				if(dayCnt == 0){
+					dayCnt = 3;
+					workYn = workYn == 'Y' ? 'N' : 'Y';
+				}else{
+					dayCnt--;
+				}
+
+			}
 		}
 	}
-}
 
 
-	
 
-function leftPad(value) {
-	if (value >= 10) {
-		return value;
+
+	function leftPad(value) {
+		if (value >= 10) {
+			return value;
+		}
+
+		return `0${value}`;
 	}
 
-	return `0${value}`;
-}
+	function toString(source, delimiter = '-') {
+		const year = source.getFullYear();
+		const month = leftPad(source.getMonth() + 1);
+		const day = leftPad(source.getDate());
 
-function toString(source, delimiter = '-') {
-	const year = source.getFullYear();
-	const month = leftPad(source.getMonth() + 1);
-	const day = leftPad(source.getDate());
-
-	return [year, month, day].join(delimiter);
-}	
+		return [year, month, day].join(delimiter);
+	}
 </script>
-	
+
 </html>
