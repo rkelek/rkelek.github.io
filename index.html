@@ -96,8 +96,8 @@
 	}
 
 	function dateChange(){
-		calcWorkDay($( "#datepicker" ).val());
 		$('#datepicker').val($( "#datepicker" ).val());
+		calcWorkDay($( "#datepicker" ).val());
 	}
 
 	function calcWorkDay(targetDay){
@@ -114,7 +114,7 @@
 					break;
 				}
 
-				if(dayCny == 0) dayCnt = 4;
+				if(dayCnt == 0) dayCnt = 4;
 				dayCnt--;
 				refDay.addDays(-1);
 				if(dayCnt == 0){
