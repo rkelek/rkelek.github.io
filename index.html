@@ -120,7 +120,7 @@
 					dayCnt = 4;
 					workYn = workYn == 'Y' ? 'N' : 'Y';
 				}
-				break;
+				if(toString(today) == toString(refDay)) break;
 			}
 		}else{
 			for(var i = 0 ; i < 9999; i++){
@@ -135,7 +135,7 @@
 					dayCnt = 0;
 					workYn = workYn == 'Y' ? 'N' : 'Y';
 				}
-				break;
+				if(toString(today) == toString(refDay)) break;
 
 			}
 		}
