@@ -81,13 +81,14 @@
 
 	function gridDays(){
 		var gridDay = new Date(refDay);;
+		var gridDayCnt = dayCnt;
 		var pText = '';
 		for(var i = 0 ; i < 365; i++){
 			pText += '<tr><td>'+toString(gridDay)+'</td><td>'+(workYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
-			dayCnt++;
+			gridDayCnt++;
 			gridDay.addDays(1);
-			if(dayCnt == 4){
-				dayCnt = 0;
+			if(gridDayCnt == 4){
+				gridDayCnt = 0;
 				workYn = workYn == 'Y' ? 'N' : 'Y';
 			}
 		}
