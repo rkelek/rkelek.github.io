@@ -72,6 +72,7 @@
 		var today = new Date();
 		if(today > refDay){
 			calcWorkDay(today);
+			$('#datepicker').val(toString(today));
 		}else{
 			gridDays();
 		}
