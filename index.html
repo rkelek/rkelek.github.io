@@ -69,13 +69,20 @@
 
 		$('#datepicker').val('2023-04-18');
 
-		gridDays();
+		var today = new Date();
+		if(today > refDay){
+			calcWorkDay(today);
+		}else{
+			gridDays();
+		}
+
+
 	});
 
 	function gridDays(){
 		var gridDay = new Date(refDay);;
 		var pText = '';
-		for(var i = 0 ; i < 368; i++){
+		for(var i = 0 ; i < 365; i++){
 			pText += '<tr><td>'+toString(gridDay)+'</td><td>'+(workYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
 			dayCnt++;
 			gridDay.addDays(1);
@@ -89,10 +96,10 @@
 	}
 
 	function dateChange(){
-		todayWorkYn($( "#datepicker" ).val());
+		calcWorkDay($( "#datepicker" ).val());
 	}
 
-	function todayWorkYn(targetDay){
+	function calcWorkDay(targetDay){
 		Date.prototype.addDays = function (days) {
 			var date = this;
 			return new Date(date.setDate(date.getDate() + days));
@@ -100,7 +107,7 @@
 		var today = new Date(targetDay);
 
 		if(today < refDay){
-			for(var i = 0 ; i < 368; i++){
+			for(var i = 0 ; i < 9999; i++){
 				if(toString(today) == toString(refDay)){
 					gridDays();
 					break;
@@ -112,6 +119,22 @@
 					workYn = workYn == 'Y' ? 'N' : 'Y';
 				}else{
 					dayCnt--;
+				}
+
+			}
+		}else{
+			for(var i = 0 ; i < 9999; i++){
+				if(toString(today) == toString(refDay)){
+					gridDays();
+					break;
+				}
+
+				refDay.addDays(1);
+				if(dayCnt == 4){
+					dayCnt = 0;
+					workYn = workYn == 'Y' ? 'N' : 'Y';
+				}else{
+					dayCnt++;
 				}
 
 			}
