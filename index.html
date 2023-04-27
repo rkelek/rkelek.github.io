@@ -97,6 +97,7 @@
 
 	function dateChange(){
 		calcWorkDay($( "#datepicker" ).val());
+		$('#datepicker').val($( "#datepicker" ).val());
 	}
 
 	function calcWorkDay(targetDay){
@@ -113,14 +114,13 @@
 					break;
 				}
 
-				refDay.addDays(-1);
+				if(dayCny == 0) dayCnt = 4;
+				dayCnt--;
+				gridDay.addDays(-1);
 				if(dayCnt == 0){
-					dayCnt = 3;
+					dayCnt = 4;
 					workYn = workYn == 'Y' ? 'N' : 'Y';
-				}else{
-					dayCnt--;
 				}
-
 			}
 		}else{
 			for(var i = 0 ; i < 9999; i++){
@@ -129,14 +129,13 @@
 					break;
 				}
 
-				refDay.addDays(1);
-				if(dayCnt == 3){
+				if(dayCny == 4) dayCnt = 0;
+				dayCnt++;
+				gridDay.addDays(1);
+				if(dayCnt == 4){
 					dayCnt = 0;
 					workYn = workYn == 'Y' ? 'N' : 'Y';
-				}else{
-					dayCnt++;
 				}
-
 			}
 		}
 	}
