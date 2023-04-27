@@ -111,7 +111,6 @@
 			for(var i = 0 ; i < 9999; i++){
 				if(toString(today) == toString(refDay)){
 					gridDays();
-					break;
 				}
 
 				if(dayCnt == 0) dayCnt = 4;
@@ -121,12 +120,12 @@
 					dayCnt = 4;
 					workYn = workYn == 'Y' ? 'N' : 'Y';
 				}
+				break;
 			}
 		}else{
 			for(var i = 0 ; i < 9999; i++){
 				if(toString(today) == toString(refDay)){
 					gridDays();
-					break;
 				}
 
 				if(dayCnt == 4) dayCnt = 0;
@@ -136,6 +135,8 @@
 					dayCnt = 0;
 					workYn = workYn == 'Y' ? 'N' : 'Y';
 				}
+				break;
+
 			}
 		}
 	}
