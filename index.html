@@ -70,10 +70,11 @@ $('document').ready(function () {
 });
 
 function gridDays(){
+	var gridDay = refDay;
 	for(var i = 0 ; i < 368; i++){
-		pText += '<tr><td>'+toString(refDay)+'</td><td>'+(workYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
+		pText += '<tr><td>'+toString(gridDay)+'</td><td>'+(workYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
 		dayCnt++;
-		refDay.addDays(1);
+		gridDay.addDays(1);
 		if(dayCnt == 4){
 			dayCnt = 0;
 			workYn = workYn == 'Y' ? 'N' : 'Y';
@@ -93,7 +94,6 @@ function todayWorkYn(targetDay){
 		return new Date(date.setDate(date.getDate() + days));
 	};
 	var today = new Date(targetDay);
-
 
 	if(today < refDay){
 		for(var i = 0 ; i < 368; i++){
