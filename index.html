@@ -81,9 +81,6 @@
 	});
 
 	function gridDays(){
-		if(dayCnt == 0) dayCnt = 4;
-		else if(dayCnt == 4) dayCnt = 0;
-
 		var gridDay = new Date(refDay);
 		var gridDayCnt = dayCnt;
 		var pText = '';
@@ -116,7 +113,10 @@
 			for(var i = 0 ; i < 9999; i++){
 				if(toString(today) == toString(refDay)){
 					gridDays();
-					if(dayCnt == 0) dayCnt = 4;
+					if(dayCnt == 0){
+						workYn = workYn == 'Y' ? 'N' : 'Y';
+						dayCnt = 4;
+					}
 					break;
 					dayCnt--;
 					refDay.addDays(-1);
@@ -142,7 +142,10 @@
 			for(var i = 0 ; i < 9999; i++){
 				if(toString(today) == toString(refDay)){
 					gridDays();
-					if(dayCnt == 4) dayCnt = 0;
+					if(dayCnt == 4){
+						workYn = workYn == 'Y' ? 'N' : 'Y';
+						dayCnt = 0;
+					}
 					break;
 					dayCnt++;
 					refDay.addDays(1);
