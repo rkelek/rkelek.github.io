@@ -26,7 +26,7 @@
 </style>
 
 <body>
-<p>시작일 : <input type="text" id="datepicker" value="2023-04-18" onchange="dateChange()"></p>
+<p>시작일 : <input type="text" id="datepicker" onchange="dateChange()"></p>
 <table>
 	<thead>
 	<tr>
@@ -48,7 +48,7 @@
 	var refDay = new Date('2023-04-18');
 	var workYn = "Y";
 	var dayCnt = 0;
-	var pText = '';
+
 	$('document').ready(function () {
 		$.datepicker.setDefaults({
 			dateFormat: 'yy-mm-dd',
@@ -67,11 +67,14 @@
 			$("#datepicker").datepicker();
 		});
 
+		$('#datepicker').val('2023-04-18');
+
 		gridDays();
 	});
 
 	function gridDays(){
 		var gridDay = new Date(refDay);;
+		var pText = '';
 		for(var i = 0 ; i < 368; i++){
 			pText += '<tr><td>'+toString(gridDay)+'</td><td>'+(workYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
 			dayCnt++;
