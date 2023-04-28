@@ -17,9 +17,7 @@
 <style>
 	table,
 	th,
-	td {
-		border: 1px solid black;
-		border-collapse: collapse;
+	td {		
 		text-align: center;
 		padding: 10px;
 	}
@@ -40,7 +38,7 @@
 <body>
 <p>시작일 : <input type="text" id="datepicker" onchange="dateChange()"></p>
 <div class="u-table u-table-responsive u-table-1">
-<table class="u-table-entity u-table-entity-1">
+<table class="u-table-entity u-table-entity-1" style="width:50%">
 	<colgroup>
 		<col width="28.1%">
 		<col width="22.6%">
@@ -108,7 +106,9 @@ var test = 123;
 		var gridWorkYn = workYn;
 		var pText = '';
 		for(var i = 0 ; i < 365; i++){
-			pText += '<tr><td class="u-table-cell">'+toString(gridDay)+'</td><td class="u-table-cell">'+(gridWorkYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
+			var addText = "";
+			if(toString(new Date()) == toString(gridDay)) addText = 'style="background: #ffd700;"';
+			pText += '<tr '+addText+'><td class="u-table-cell">'+toString(gridDay)+'</td><td class="u-table-cell">'+(gridWorkYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
 			gridDayCnt++;
 			gridDay.addDays(1);
 			if(gridDayCnt == 4){
