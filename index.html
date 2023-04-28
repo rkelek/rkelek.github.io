@@ -108,8 +108,14 @@ var test = 123;
 		var pText = '';
 		for(var i = 0 ; i < 365; i++){
 			var addText = "";
-			if(toString(new Date()) == toString(gridDay)) addText = 'style="background: #ffd700;"';
-			pText += '<tr '+addText+' '+gridWorkYn == 'Y' ? "" : 'style="color:#dc143c"' +'><td class="u-table-cell">'+toString(gridDay)+'</td><td class="u-table-cell">'+(gridWorkYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
+			if(toString(new Date()) == toString(gridDay) && gridWorkYn == 'Y') addText = 'style="background: #ffd700; color: #dc143c;" ';
+			else if(toString(new Date()) == toString(gridDay)) addText += ' style="background: #ffd700;"';
+			else if(gridWorkYn == 'Y') addText += ' style="color:#dc143c"';
+			
+
+			
+			
+			pText += '<tr '+addText+'><td class="u-table-cell">'+toString(gridDay)+'</td><td class="u-table-cell">'+(gridWorkYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
 			gridDayCnt++;
 			gridDay.addDays(1);
 			if(gridDayCnt == 4){
