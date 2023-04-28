@@ -101,6 +101,7 @@ var test = 123;
 	});
 
 	function gridDays(){
+		if(dayCnt == 4) dayCnt = 0;
 		var gridDay = new Date(refDay);
 		var gridDayCnt = dayCnt;
 		var gridWorkYn = workYn;
