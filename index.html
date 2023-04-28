@@ -108,9 +108,9 @@ var test = 123;
 		var pText = '';
 		for(var i = 0 ; i < 365; i++){
 			var addText = "";
-			if(toString(new Date()) == toString(gridDay) && gridWorkYn == 'Y') addText = 'style="background: #ffd700; color: #dc143c;" ';
+			if(toString(new Date()) == toString(gridDay) && gridWorkYn == 'N') addText = 'style="background: #ffd700; color: #dc143c;" ';
 			else if(toString(new Date()) == toString(gridDay)) addText += ' style="background: #ffd700;"';
-			else if(gridWorkYn == 'Y') addText += ' style="color:#dc143c"';
+			else if(gridWorkYn == 'N') addText += ' style="color:#dc143c"';
 			
 
 			
