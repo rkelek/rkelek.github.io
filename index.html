@@ -11,6 +11,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/theme.min.css" integrity="sha512-hbs/7O+vqWZS49DulqH1n2lVtu63t3c3MTAn0oYMINS5aT8eIAbJGDXgLt6IxDHcWyzVTgf9XyzZ9iWyVQ7mCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" src="/css/style.css" />
+	<link rel="stylesheet" src="/css/font.css" />
 
 
 </head>
@@ -24,19 +26,41 @@
 		padding: 10px;
 	}
 </style>
+<style class="u-style">
+.u-section-2 {background-image: none}
+.u-section-2 .u-sheet-1 {min-height: 485px}
+.u-section-2 .u-table-1 {width: 937px; margin: 60px auto}
+.u-section-2 .u-table-entity-1 {min-height: 100px; height: 325px}
+.u-section-2 .u-table-header-1 {font-weight: 700; background-image: none}
+.u-section-2 .u-table-body-1 {background-image: none}
+.u-block-4d4b-35 {background-image: none} 
+@media (max-width: 991px){ .u-section-2 .u-table-1 {width: 720px} }
+@media (max-width: 767px){ .u-section-2 .u-table-1 {width: 540px} }
+@media (max-width: 575px){ .u-section-2 .u-table-1 {width: 340px} }
+</style>
 
 <body>
 <p>시작일 : <input type="text" id="datepicker" onchange="dateChange()"></p>
-<table>
-	<thead>
-	<tr>
-		<th>날짜</th>
-		<th>출근여부</th>
-	</tr>
-	</thead>
-	<tbody id="tbooyCheck">
-	</tbody>
+<div class="u-table u-table-responsive u-table-1">
+<table class="u-table-entity u-table-entity-1">
+	<colgroup>
+		<col width="28.1%">
+		<col width="22.6%">
+	</colgroup>
+  <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
+    <tr>
+      <th class="u-table-cell">날짜 </th>
+      <th class="u-table-cell"> 출근여부 </th>
+    </tr>
+  </thead>
+  <tbody class="u-table-alt-palette-1-light-3 u-table-body u-white u-table-body-1" id="tbooyCheck">
+    <tr>
+      <td class="u-table-cell">2020-06-04 01:22</td>
+      <td class="u-table-cell"> 200398</td>     
+    </tr>
+      </tbody>
 </table>
+</div>
 </body>
 
 <script>
@@ -86,7 +110,7 @@ var test = 123;
 		var gridWorkYn = workYn;
 		var pText = '';
 		for(var i = 0 ; i < 365; i++){
-			pText += '<tr><td>'+toString(gridDay)+'</td><td>'+(gridWorkYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
+			pText += '<tr><td class="u-table-cell">'+toString(gridDay)+'</td><td class="u-table-cell">'+(gridWorkYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
 			gridDayCnt++;
 			gridDay.addDays(1);
 			if(gridDayCnt == 4){
