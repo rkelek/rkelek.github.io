@@ -64,7 +64,7 @@
 		var date = this;
 		return new Date(date.setDate(date.getDate() + days));
 	};
-var test = 123;
+
 	var refDay = new Date('2023-04-18');
 	var workYn = "Y";
 	var dayCnt = 0;
@@ -106,7 +106,7 @@ var test = 123;
 		var gridDayCnt = dayCnt;
 		var gridWorkYn = workYn;
 		var pText = '';
-		for(var i = 0 ; i < 365; i++){
+		for(var i = 0 ; i < 60; i++){
 			var addText = "";
 			if(toString(new Date()) == toString(gridDay)) addText = 'style="background: #ffd700;"';
 			pText += '<tr '+addText+'><td class="u-table-cell">'+toString(gridDay)+'</td><td class="u-table-cell">'+(gridWorkYn == 'Y' ? "일하는날" : "쉬는날")+'</td></tr>'
