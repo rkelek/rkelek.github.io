@@ -160,7 +160,10 @@ var test = 123;
 
 
 				}else{
-					if(dayCnt == 0) dayCnt = 4;
+					if(dayCnt == 0){
+						dayCnt = 4;
+						workYn = workYn == 'Y' ? 'N' : 'Y';
+					}
 					dayCnt--;
 					refDay.addDays(-1);
 					if(dayCnt == 0){
@@ -189,7 +192,10 @@ var test = 123;
 
 
 				}else{
-					if(dayCnt == 4) dayCnt = 0;
+					if(dayCnt == 4){
+						dayCnt = 0;
+						workYn = workYn == 'Y' ? 'N' : 'Y';
+					}
 					dayCnt++;
 					refDay.addDays(1);
 					if(dayCnt == 4){
